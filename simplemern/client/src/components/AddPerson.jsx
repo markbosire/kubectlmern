@@ -58,7 +58,7 @@ const AddPerson = ({}) => {
 
   return (
     <div className="add-person-main">
-      <h1 className="app-title">MERN Application</h1>
+      <h1 className="app-title">SIMPLE MERN Application</h1>
       <form className="add-person-form" onSubmit={handleSubmit}>
         <input
           className="form-input"
