@@ -34,7 +34,7 @@ pipeline {
             steps {
                 script {
                     // Frontend with build argument
-                    docker.build("${FRONTEND_IMAGE}:${env.BUILD_ID}", "--build-arg VITE_API_IP=${env.FRONTEND_STATIC_IP} ./simplemern/client")                    
+                    docker.build("${FRONTEND_IMAGE}:${env.BUILD_ID}", "--build-arg VITE_API_IP=${env.BACKEND_STATIC_IP} ./simplemern/client")                    
                     // Backend
                     docker.build("${BACKEND_IMAGE}:${env.BUILD_ID}", './simplemern')
                 }
