@@ -64,7 +64,7 @@ pipeline {
                          envsubst < kubernetes/frontend-app.yaml > kubernetes/frontend-app.yaml
                          envsubst < kubernetes/backend-app.yaml > kubernetes/backend-app.yaml
                          envsubst < kubernetes/mongo-express.yaml > kubernetes/mongo-express.yaml
-                         envsubst < kubernetes/app-config..yaml > kubernetes/app-config.yaml
+                         envsubst < kubernetes/app-config.yaml > kubernetes/app-config.yaml
                        
                         """
                         
