@@ -24,7 +24,7 @@ const start = async () => {
         
         await connectDB(mongoURI);
         app.listen(port, () => {
-            console.log("Server is listening on port " + port);
+            console.log("Server is currently listening on port " + port);
              console.log("frontend ip is " + process.env.IP);
         });
     } catch (error) {
