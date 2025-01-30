@@ -60,12 +60,18 @@ pipeline {
                         sh "gcloud container clusters get-credentials ${GKE_CLUSTER} --zone ${GKE_ZONE} --project ${GCP_PROJECT}"
                         
                         // Inject static IPs into manifests
-                        sh """
-                         envsubst < kubernetes/frontend-app.yaml > kubernetes/frontend-app.yaml
-                         envsubst < kubernetes/backend-app.yaml > kubernetes/backend-app.yaml
-                         envsubst < kubernetes/mongo-express.yaml > kubernetes/mongo-express.yaml
-                         envsubst < kubernetes/app-config.yaml > kubernetes/app-config.yaml
-                       
+                         sh """
+                            envsubst < kubernetes/frontend-app.yaml > kubernetes/frontend-app-temp.yaml
+                            mv kubernetes/frontend-app-temp.yaml kubernetes/frontend-app.yaml
+                            
+                            envsubst < kubernetes/backend-app.yaml > kubernetes/backend-app-temp.yaml
+                            mv kubernetes/backend-app-temp.yaml kubernetes/backend-app.yaml
+                            
+                            envsubst < kubernetes/mongo-express.yaml > kubernetes/mongo-express-temp.yaml
+                            mv kubernetes/mongo-express-temp.yaml kubernetes/mongo-express.yaml
+                            
+                            envsubst < kubernetes/app-config.yaml > kubernetes/app-config-temp.yaml
+                            mv kubernetes/app-config-temp.yaml kubernetes/app-config.yaml   
                         """
                         
                         // Apply configurations
