@@ -8,9 +8,9 @@ pipeline {
         GKE_ZONE = "us-central1-a"
         
         // Static IPs from GCP setup
-        FRONTEND_STATIC_IP = "34.122.242.94"  // Replace with your actual IP
-        BACKEND_STATIC_IP = "34.134.167.178"   // Replace with your actual IP
-        MONGO_EXPRESS_STATIC_IP = "104.155.176.58" // Replace with your actual IP
+        FRONTEND_STATIC_IP = "34.123.113.206"  // Replace with your actual IP
+        BACKEND_STATIC_IP = "104.197.201.93"   // Replace with your actual IP
+        MONGO_EXPRESS_STATIC_IP = "34.46.84.248" // Replace with your actual IP
         IMAGE_TAG = "${env.BUILD_ID}"
     }
     stages {
