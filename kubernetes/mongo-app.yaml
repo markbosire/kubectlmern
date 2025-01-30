@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongo-app
+  namespace: default # Change this if using a different namespace
+  labels:
+    app: mongo-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongo-app
+  template:
+    metadata:
+      labels:
+        app: mongo-app
+    spec:
+      containers:
+        - name: mongo-app
+          image: mongo:latest
+          resources:
+            limits:
+              memory: 512Mi
+              cpu: "1"
+            requests:
+              memory: 256Mi
+              cpu: "0.2"
+            # Replace with your application's Docker image
+          ports:
+            - containerPort: 27017 # Replace with your app's port
+          env:
+            - name: MONGO_INITDB_ROOT_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-secret
+                  key: mongo-username
+            - name: MONGO_INITDB_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-secret
+                  key: mongo-password
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo-app-service
+  namespace: default # Change this if using a different namespace
+  labels:
+    app: mongo-app
+spec:
+  selector:
+    app: mongo-app
+  ports:
+    - protocol: TCP
+      port: 27017 # External port
+      targetPort: 27017 # Application container's port
+  type: ClusterIP

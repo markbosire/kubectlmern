@@ -1,0 +1,42 @@
+.add-person-main{
+    margin-top: 20px;
+}
+
+form.add-person-form{
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.form-input{
+    height: 50px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid black;
+    text-indent: 10px;
+    font-size: 20px;
+}
+
+.form-submit{
+    background-color: blueviolet;
+    border-radius: 10px;
+    color: white;
+    border: 0;
+    font-size: 20px;
+    font-weight: bold;
+    outline: none;
+    padding: 10px 0px;
+    transition: background 500ms linear 0ms;
+}
+
+.form-submit:hover{
+background-color: #6720a8;
+cursor: pointer;
+}
+
+.app-title{
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+}
